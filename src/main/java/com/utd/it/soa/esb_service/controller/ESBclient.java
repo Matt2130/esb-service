@@ -23,7 +23,7 @@ public class ESBclient {
             @RequestBody Client client) {
         if (authClient.validateToken(token)) {
             String response = webClientBuilder.build().post()
-                    .uri("http://clients:3000/api/clients")
+                    .uri("clients.railway.internal:3000/api/clients")
                     .header("Authorization", token)
                     .bodyValue(client)
                     .retrieve()
@@ -47,7 +47,7 @@ public class ESBclient {
 
         // Realizar la petición GET con el token
         String response = webClientBuilder.build().get()
-                .uri("http://clients:3000/api/clients/all")
+                .uri("clients.railway.internal:3000/api/clients/all")
                 .header(HttpHeaders.AUTHORIZATION, token)
                 .retrieve()
                 .bodyToMono(String.class)
@@ -62,7 +62,7 @@ public class ESBclient {
             @RequestBody Client client) {
         if (authClient.validateToken(token)) {
             String response = webClientBuilder.build().put()
-                    .uri("http://clients:3000/api/clients/" + id)
+                    .uri("clients.railway.internal:3000/api/clients/" + id)
                     .header("Authorization", token)
                     .bodyValue(client)
                     .retrieve()
@@ -88,7 +88,7 @@ public class ESBclient {
 
         // Realizar la petición PATCH con el token
         String response = webClientBuilder.build().patch()
-                .uri("http://clients:3000/api/clients/" + id)
+                .uri("clients.railway.internal:3000/api/clients/" + id)
                 .header(HttpHeaders.AUTHORIZATION, token)
                 .header("Content-Type", "application/json")
                 .retrieve()
