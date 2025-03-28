@@ -8,4 +8,4 @@ logging:
     com.utd.it.soa: DEBUG
 
 server:
-  port: 8080
+  port: ${PORT:8080}

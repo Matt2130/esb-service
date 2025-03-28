@@ -22,7 +22,7 @@ import com.utd.it.soa.esb_service.utils.Auth;
 public class ESBController {
 
         // Correcta inicialización de WebClient
-        private final WebClient webClient = WebClient.create("users.railway.internal/api/users");
+        private final WebClient webClient = WebClient.create("http://users.railway.internal/api/users");
         private final Auth auth = new Auth();
 
         @PostMapping("/user")
