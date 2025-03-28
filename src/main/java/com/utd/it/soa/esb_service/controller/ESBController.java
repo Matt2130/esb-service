@@ -22,7 +22,7 @@ import com.utd.it.soa.esb_service.utils.Auth;
 public class ESBController {
 
         // Correcta inicialización de WebClient
-        private final WebClient webClient = WebClient.create();
+        private final WebClient webClient = WebClient.create("users.railway.internal/api/users");
         private final Auth auth = new Auth();
 
         @PostMapping("/user")
@@ -39,7 +39,7 @@ public class ESBController {
 
                 // Enviar la petición correctamente con Content-Type JSON
                 String response = webClient.post()
-                                .uri("users.railway.internal:3000/api/users")
+                                .uri("/")
                                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                                 .bodyValue(user)
                                 .retrieve()
@@ -60,7 +60,7 @@ public class ESBController {
 
                 // Realizar la petición GET con el token
                 String response = webClient.get()
-                                .uri("users.railway.internal:3000/api/users/all")
+                                .uri("/all")
                                 .header(HttpHeaders.AUTHORIZATION, token)
                                 .retrieve()
                                 .bodyToMono(String.class)
@@ -83,7 +83,7 @@ public class ESBController {
 
                 // Realizar la petición PUT con el token
                 String response = webClient.put()
-                                .uri("users.railway.internal:3000/api/users/" + id)
+                                .uri("/" + id)
                                 .header(HttpHeaders.AUTHORIZATION, token)
                                 .bodyValue(user)
                                 .retrieve()
@@ -106,7 +106,7 @@ public class ESBController {
 
                 // Realizar la petición PATCH con el token
                 String response = webClient.patch()
-                                .uri("users.railway.internal:3000/api/users/" + id) // localhost:4000
+                                .uri("/" + id) // localhost:4000
                                 .header(HttpHeaders.AUTHORIZATION, token)
                                 .retrieve()
                                 .bodyToMono(String.class)
